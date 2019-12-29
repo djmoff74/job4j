@@ -1,1 +1,2 @@
-# job4j #clone to temp
+# job4j 
+5. Интеграция GIT и IDEA
