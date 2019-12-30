@@ -12,4 +12,10 @@ public class SqMaxTest {
         int result = check.max(2, 1, 2, 1);
         assertThat(result, is(2));
     }
+    @Test
+    public void when3Max() {
+        SqMax check = new SqMax();
+        int result = check.max(2, 1, 8, 1);
+        assertThat(result, is(8));
+    }
 }
