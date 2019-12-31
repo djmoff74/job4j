@@ -10,7 +10,7 @@ public class PointTest {
     @Test
     public void distance() {
         double result = Point.distance(2, 11, 9, 14);
-        double out = 7.615773105863909;
+        double out = 7.61;
         Assert.assertEquals(result, out, 0.01);
             }
 }
