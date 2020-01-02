@@ -1,5 +1,12 @@
 package ru.job4j.loop;
 
+/**
+ * Class Slach рисуем крест в псевдографике.
+ * @author Eduard Lykov (djmoff74@gmail.com)
+ * @version 1.0
+ * @since 02.01.2020
+ */
+
 public class Slash {
     public static void draw(int size) {
         for (int row = 0; row < size; row++) {
