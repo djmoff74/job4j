@@ -7,13 +7,13 @@ import static org.junit.Assert.assertThat;
 
 public class FactorialTest {
     @Test
-    public void Factorial0To5() {
+    public void factorial0To5() {
         int result = Factorial.calk(5);
         assertThat(result, is(120));
     }
 
     @Test
-    public void Factorial0() {
+    public void factorial0() {
         int result = Factorial.calk(0);
         assertThat(result, is(1));
     }
