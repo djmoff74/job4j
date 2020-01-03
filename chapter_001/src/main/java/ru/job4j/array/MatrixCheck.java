@@ -20,9 +20,9 @@ public class MatrixCheck {
         return result;
     }
 
-    public static boolean monoHorizontal(char[][] board, int row) {
+    public static boolean monoVertical(char[][] board, int cell) {
         boolean result = true;
-        for (int cell = 0; cell < board.length; cell++) {
+        for (int row = 0; row < board.length; row++) {
             if (board[row][cell] != 'X') {
                 result = false;
                 break;
