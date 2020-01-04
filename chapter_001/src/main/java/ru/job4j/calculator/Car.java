@@ -7,7 +7,7 @@ public class Car {
         this.volume = this.volume - kilometer;
         boolean canDrive = this.volume > 0;
         if (canDrive) {
-            System.out.println("Beep! I can drive!");
+            System.out.println("Beep! I can drive!!!");
         } else {
             System.out.println("Oh. I am tired. I can't drive.");
         }
@@ -20,7 +20,7 @@ public class Car {
     public boolean canDrive() {
         boolean result = this.volume > 0;
         if (result) {
-            System.out.println("Beep! I can drive.");
+            System.out.println("Beep! I can drive!!!");
         }
         return result;
     }
