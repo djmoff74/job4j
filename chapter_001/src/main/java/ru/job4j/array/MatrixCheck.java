@@ -34,10 +34,8 @@ public class MatrixCheck {
     public static char[] extractDiagonal(char[][] board) {
         char[] rsl = new char[board.length];
         for (int cell = 0; cell != board.length; cell++) {
-            if (board[cell][cell] == 'X') {
-                rsl[cell] = board[cell][cell];
+            rsl[cell] = board[cell][cell];
             }
-        }
         return rsl;
     }
 
