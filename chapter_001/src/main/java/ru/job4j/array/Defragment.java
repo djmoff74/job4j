@@ -2,7 +2,6 @@ package ru.job4j.array;
 
 /**
  * Class Defragment производит сортировку массива
- *
  * @author Lykov
  * @version 1.0
  * @since 03.01.2020
@@ -11,7 +10,6 @@ package ru.job4j.array;
 public class Defragment {
     /**
      * Method compress перемещает пустые элементы в конец массива
-     *
      * @param array массив, в котором производятся сортировка
      * @return отсортированный массив
      */

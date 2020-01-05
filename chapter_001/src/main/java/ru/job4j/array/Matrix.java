@@ -7,7 +7,6 @@ public class Matrix {
             for (int in = 0; in < size; in++) {
                 table[out][in] = (out + 1) * (in + 1);
             }
-
         }
         return table;
     }

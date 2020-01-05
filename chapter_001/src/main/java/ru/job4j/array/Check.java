@@ -1,5 +1,11 @@
 package ru.job4j.array;
 
+/**
+ * Class Check
+ * @author Lykov
+ * @version 1.0
+ * @since 03.01.2020
+ */
 public class Check {
     public boolean mono(boolean[] data) {
         boolean result = true;

@@ -2,7 +2,6 @@ package ru.job4j.array;
 
 /**
  * Class MatrixCheck
- *
  * @author Lykov
  * @version 1.0
  * @since 03.01.2020
