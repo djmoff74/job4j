@@ -1,4 +1,4 @@
-package ru.jobj.tracker.oop;
+package ru.jobj.oop;
 
 public class BallStory {
     public static void main(String[] args) {

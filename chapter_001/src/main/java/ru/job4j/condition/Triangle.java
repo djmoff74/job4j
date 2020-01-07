@@ -1,9 +1,9 @@
 package ru.job4j.condition;
 
 public class Triangle {
-    private Point first;
-    private Point second;
-    private Point third;
+    private final Point first;
+    private final Point second;
+    private final Point third;
 
     public Triangle(Point ap, Point bp, Point cp) {
         this.first = ap;
@@ -61,7 +61,7 @@ public class Triangle {
      * @return возращает true или false
      */
     private boolean exist(double a, double c, double b) {
-        boolean result = (a + c) > b && (a + b) > c && (b + c) > a;
-        return result;
+        return (a + c) > b && (a + b) > c && (b + c) > a;
+
     }
 }

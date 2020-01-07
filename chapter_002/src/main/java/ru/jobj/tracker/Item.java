@@ -1,4 +1,4 @@
 package ru.jobj.tracker;
 
-public class Tracker {
+public class Item {
 }

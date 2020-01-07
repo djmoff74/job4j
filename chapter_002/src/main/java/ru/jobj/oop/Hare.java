@@ -1,4 +1,4 @@
-package ru.jobj.tracker.oop;
+package ru.jobj.oop;
 
 public class Hare {
     public void tryEat(Ball ball) {
