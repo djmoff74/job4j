@@ -1,7 +1,7 @@
 package ru.job4j.array;
 
 /**
- * Class Defragment производит сортировку массива
+ * Class Defragment sorts an array
  * @author Lykov
  * @version 1.0
  * @since 03.01.2020
@@ -9,9 +9,9 @@ package ru.job4j.array;
 
 public class Defragment {
     /**
-     * Method compress перемещает пустые элементы в конец массива
-     * @param array массив, в котором производятся сортировка
-     * @return отсортированный массив
+     * Method compress move empty elements to end
+     * @param array
+     * @return sorted massive
      */
     public static String[] compress(String[] array) {
         for (int index = 0; index < array.length; index++) {
