@@ -1,14 +1,14 @@
 package ru.jobj.oop;
 
 public class Tiger extends Predator {
-    public Tiger() {
-            super();
-            System.out.println("class Tiger");
-        }
+    public Tiger(String name) {
+        super(name);
+        System.out.println("class Tiger");
+    }
 
         public static void main(String[] args) {
-            Animal animal = new Animal();
-            Predator predator = new Predator();
-            Tiger tiger = new Tiger();
+            Animal animal = new Animal("animal");
+            Predator predator = new Predator("predator");
+            Tiger tiger = new Tiger("tiger");
         }
 }
