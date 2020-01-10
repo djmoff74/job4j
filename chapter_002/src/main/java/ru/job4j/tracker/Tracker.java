@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import ru.job4j.tracker.Item;
-
 import java.util.Arrays;
 import java.util.Random;
 /**
@@ -85,21 +83,38 @@ public class Tracker {
     }
 
     /**
+     * Метод indexOf(String id) ищет индекс массива items, в котором объект с данным id
+     *
+     * @param id идентификатор объекта Item
+     * @return индекс массива items
+     */
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getId().equals(id)) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    /**
      * Метод findById(String id) для получения заявки по уникальному ключу (id)
      *
      * @param id уникальный ключ заявки
      * @return заявка с искомым id
      */
     public Item findById(String id) {
-        Item result = null;
-        Item[] currentItems = new Item[position];
-        for (int i = 0; i < currentItems.length; i++) {
-            Item item = this.items[i];
-            if (item.getId().equals(id)) {
-                result = item;
-                break;
-            }
+        return items[indexOf(id)];
+    }
+
+    public void replace(String id, Item item) {
+        int index = indexOf(id);
+        if (index != -1) {
+            item.setId(items[index].getId());
+            items[index] = item;
         }
-        return result;
+
     }
 }
