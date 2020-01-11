@@ -121,7 +121,6 @@ public class Tracker {
             System.arraycopy(items, start, items, distPos, size);
             items[position] = null;
             position--;
-            System.out.println("Item deleted");
         } else {
             System.out.println("Invalid item id");
         }
