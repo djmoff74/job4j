@@ -106,7 +106,12 @@ public class Tracker {
      * @return заявка с искомым id
      */
     public Item findById(String id) {
-        return items[indexOf(id)];
+        Item result = null;
+        int index = indexOf(id);
+        if (index != -1) {
+            result = items[index];
+        }
+        return result;
     }
 
     public void replace(String id, Item item) {
@@ -116,5 +121,19 @@ public class Tracker {
             items[index] = item;
         }
 
+    }
+
+    public void delete(String id) {
+        int distPos = indexOf(id);
+        if (distPos != -1) {
+            int start = distPos + 1;
+            int size = position - indexOf(id);
+            System.arraycopy(items, start, items, distPos, size);
+            items[position] = null;
+            position--;
+            System.out.println("Item deleted");
+        } else {
+            System.out.println("Invalid item id");
+        }
     }
 }
