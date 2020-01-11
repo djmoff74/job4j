@@ -127,7 +127,7 @@ public class Tracker {
         int distPos = indexOf(id);
         if (distPos != -1) {
             int start = distPos + 1;
-            int size = position - indexOf(id);
+            int size = position - distPos;
             System.arraycopy(items, start, items, distPos, size);
             items[position] = null;
             position--;
