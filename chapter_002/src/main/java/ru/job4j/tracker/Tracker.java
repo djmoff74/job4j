@@ -49,17 +49,7 @@ public class Tracker {
      * @return массив this.items без null элементов
      */
     public Item[] findAll() {
-        Item[] result = new Item[position];
-        int size = 0;
-        for (int i = 0; i < result.length; i++) {
-            Item item = this.items[i];
-            if (item != null) {
-                result[size] = item;
-                size++;
-            }
-        }
-        result = Arrays.copyOf(result, size);
-        return result;
+        return  Arrays.copyOf(items, position);
     }
 
     /**
@@ -78,8 +68,8 @@ public class Tracker {
                 size++;
             }
         }
-        result = Arrays.copyOf(result, size);
-        return result;
+       return Arrays.copyOf(result, size);
+
     }
 
     /**
