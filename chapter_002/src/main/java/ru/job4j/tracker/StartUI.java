@@ -14,6 +14,7 @@ public class StartUI {
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
+        System.out.println("Item, " + name + " ID: " + item.getId() + " succefule added.");
     }
 
     public static void findAll(Input input, Tracker tracker) {
@@ -77,7 +78,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int select = Integer.valueOf(input.askInt("Select: "));
+            int select = input.askInt("Select: ");
             if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
