@@ -53,17 +53,17 @@ public class Tracker {
     }
 
     /**
-     * Метод findByName(String key) для получения списка заявок по имени
+     * Метод findByName(String name) для получения списка заявок по имени
      *
-     * @param key имя заявки
+     * @param name имя заявки
      * @return массив this.items с выборкой по имени заявки
      */
-    public Item[] findByName(String key) {
+    public Item[] findByName(String name) {
         Item[] result = new Item[position];
         int size = 0;
         for (int i = 0; i < result.length; i++) {
             Item item = this.items[i];
-            if (item.getName().equals(key)) {
+            if (item.getName().equals(name)) {
                 result[size] = item;
                 size++;
             }
@@ -97,9 +97,8 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        int index = indexOf(id);
-        if (index != -1) {
-            result = items[index];
+        if (indexOf(id) != -1) {
+            result = items[indexOf(id)];
         }
         return result;
     }

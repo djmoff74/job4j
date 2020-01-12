@@ -30,10 +30,11 @@ public class StartUI {
             } else if (select == 2) {
                 System.out.println("Edit item");
                 System.out.print("Enter Id: ");
-                String name = scanner.nextLine();
+                String id = scanner.nextLine();
                 System.out.print("Enter new name: ");
                 String newName = scanner.nextLine();
-                tracker.findById(name).setName(newName);
+                Item item = new Item(newName);
+                tracker.replace(id, item);
                 System.out.println("=== Item was edited ====");
             } else if (select == 3) {
                 System.out.println("Delete item");
@@ -44,17 +45,25 @@ public class StartUI {
             } else if (select == 4) {
                 System.out.println("=== Find item by Id ====");
                 System.out.print("Enter Id: ");
-                String name = scanner.nextLine();
-                System.out.println("=== Item found by Id: " + name + " ====");
-                System.out.println(tracker.findById(name).getId() + " " + tracker.findById(name).getName());
+                String id = scanner.nextLine();
+                Item result = tracker.findById(id);
+                if (result != null) {
+                    System.out.println("ID: " + tracker.findById(id).getId() + "    " + "Name: " + tracker.findById(id).getName());
+                } else {
+                    System.out.println("Item not found");
+                }
             } else if (select == 5) {
                 System.out.println("=== Find items by name ====");
                 System.out.print("Enter name: ");
                 String name = scanner.nextLine();
                 Item[] result = tracker.findByName(name);
                 System.out.println("=== Items found by name:  ====");
-                for (Item item : result) {
-                    System.out.println(item.getId() + " " + item.getName());
+                if (result != null) {
+                    for (Item item : result) {
+                        System.out.println("ID: " + item.getId() + "   Name: " + item.getName());
+                    }
+                } else {
+                    System.out.println("Item not found");
                 }
 
             } else if (select == 6) {
