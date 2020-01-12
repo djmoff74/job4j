@@ -33,11 +33,10 @@ public class PaintTest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("++++")
-                                .append("+     +")
-                                .append("+     +")
-                                .append("++++")
-                                .append(System.lineSeparator())
+                                .append("+++++++").append(System.lineSeparator())
+                                .append("+     +").append(System.lineSeparator())
+                                .append("+     +").append(System.lineSeparator())
+                                .append("+++++++").append(System.lineSeparator())
                                 .toString()
                 )
         );
@@ -55,10 +54,9 @@ public class PaintTest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("  +  ")
-                                .append(" + + ")
-                                .append("+++++")
-                                .append(System.lineSeparator())
+                                .append("  +  ").append(System.lineSeparator())
+                                .append(" + + ").append(System.lineSeparator())
+                                .append("+++++").append(System.lineSeparator())
                                 .toString()
                 )
         );

@@ -10,9 +10,10 @@ package ru.job4j.stragery;
 public class Triangle implements Shape {
     @Override
     public String draw() {
+        String s = System.lineSeparator();
         StringBuilder pic = new StringBuilder();
-        pic.append("  +  ");
-        pic.append(" + + ");
+        pic.append("  +  ").append(s);
+        pic.append(" + + ").append(s);
         pic.append("+++++");
         return pic.toString();
     }
