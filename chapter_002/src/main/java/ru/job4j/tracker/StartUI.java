@@ -34,14 +34,24 @@ public class StartUI {
                 System.out.print("Enter new name: ");
                 String newName = scanner.nextLine();
                 Item item = new Item(newName);
-                tracker.replace(id, item);
-                System.out.println("=== Item was edited ====");
+                boolean check = tracker.replace(id, item);
+                if (check) {
+                    System.out.println("Item ID :" + id + " was edited.");
+                } else {
+                    System.out.println("Item ID :" + id + " not found.");
+                }
+
             } else if (select == 3) {
                 System.out.println("Delete item");
                 System.out.print("Enter Id: ");
-                String name = scanner.nextLine();
-                tracker.delete(name);
-                System.out.println("=== Item was deleted ====");
+                String id = scanner.nextLine();
+                boolean check = tracker.delete(id);
+                if (check) {
+                    System.out.println("Item ID :" + id + " was deleted.");
+                } else {
+                    System.out.println("Item ID :" + id + " not found.");
+                }
+
             } else if (select == 4) {
                 System.out.println("=== Find item by Id ====");
                 System.out.print("Enter Id: ");
@@ -58,12 +68,12 @@ public class StartUI {
                 String name = scanner.nextLine();
                 Item[] result = tracker.findByName(name);
                 System.out.println("=== Items found by name:  ====");
-                if (result != null) {
+                if (result.length > 0) {
                     for (Item item : result) {
                         System.out.println("ID: " + item.getId() + "   Name: " + item.getName());
                     }
                 } else {
-                    System.out.println("Item not found");
+                    System.out.println("Item , " + name + " not found");
                 }
 
             } else if (select == 6) {
