@@ -20,6 +20,7 @@ import static org.junit.Assert.assertThat;
  * @since 12.01.2020
  */
 public class StartUITest {
+    private final ArrayList<UserAction> userActions = new ArrayList<>();
     private final PrintStream def = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     @Before
@@ -74,7 +75,7 @@ public class StartUITest {
                 new String[] {"0"}
         );
         StubAction action = new StubAction();
-        ArrayList<UserAction> userActions = new ArrayList<>();
+        userActions.add(action);
         new StartUI().init(input, new Tracker(), userActions);
         assertThat(action.isCall(), is(true));
     }
@@ -85,7 +86,7 @@ public class StartUITest {
                 new String[] {"0"}
         );
         StubAction action = new StubAction();
-        ArrayList<UserAction> userActions = new ArrayList<>();
+        userActions.add(action);
         new StartUI().init(input, new Tracker(), userActions);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")

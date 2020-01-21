@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @since 11.01.2020
  */
 public class StartUI {
+    private static ArrayList<UserAction> actions = new ArrayList<>();
 
     public void init(Input input, Tracker tracker, ArrayList<UserAction> actions) {
         boolean run = true;
@@ -34,7 +35,6 @@ public class StartUI {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<>();
                 actions.add(new CreateAction());
                 actions.add(new ShowAction());
                 actions.add(new ReplaceAction());
