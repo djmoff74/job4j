@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 
 import static org.hamcrest.Matchers.is;
@@ -20,7 +21,7 @@ import static org.junit.Assert.assertThat;
  * @since 12.01.2020
  */
 public class StartUITest {
-    private final ArrayList<UserAction> userActions = new ArrayList<>();
+    private final List<UserAction> userActions = new ArrayList<>();
     private final PrintStream def = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     @Before
