@@ -1,5 +1,7 @@
 package bank;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -12,18 +14,18 @@ import static org.junit.Assert.*;
  * @since 25.01.2020
  */
 public class BankServiceTest {
+
+    User user = new User("3434", "Petr Arsentev");
+    BankService bank = new BankService();
+
     @Test
     public void addUser() {
-        User user = new User("3434", "Petr Arsentev");
-        BankService bank = new BankService();
         bank.addUser(user);
         assertThat(bank.findByPassport("3434"), is(user));
     }
 
     @Test
     public void addAccount() {
-        User user = new User("3434", "Petr Arsentev");
-        BankService bank = new BankService();
         bank.addUser(user);
         bank.addAccount(user.getPassport(), new Account("5546", 150));
         assertThat(bank.findByRequisite("3434", "5546").getBalance(), is(150.0));
@@ -31,8 +33,6 @@ public class BankServiceTest {
 
     @Test
     public void transferMoney() {
-        User user = new User("3434", "Petr Arsentev");
-        BankService bank = new BankService();
         bank.addUser(user);
         bank.addAccount(user.getPassport(), new Account("5546", 150));
         bank.addAccount(user.getPassport(), new Account("113", 50));
