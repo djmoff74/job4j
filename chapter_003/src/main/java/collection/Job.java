@@ -1,5 +1,7 @@
 package collection;
 
+import java.util.Comparator;
+
 /**
  * Class Job
  *
