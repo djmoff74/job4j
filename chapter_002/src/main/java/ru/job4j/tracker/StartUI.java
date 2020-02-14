@@ -24,20 +24,35 @@ public class StartUI {
         this.output = output;
     }
 
-        public void init() {
-            MenuTracker menu = new MenuTracker(this.input, this.tracker, output);
-            boolean run = true;
-            while (run) {
-                menu.showMenu();
-                int select = input.askInt("Select: ", menu.getActions().size());
-                UserAction action = menu.getActions().get(select);
-                run = action.execute(input, tracker);
-            }
+    public void init(List<UserAction> actions) {
+        boolean run = true;
+        while (run) {
+            this.showMenu(actions);
+            int select = input.askInt("Select: ", actions.size());
+            UserAction action = actions.get(select);
+            run = action.execute(input, tracker);
         }
+    }
 
-        public static void main(String[]args) {
-            new StartUI(new ValidateInput(new ConsoleInput()), new Tracker(), System.out::println).init();
+    private void showMenu(List<UserAction> actions) {
+        output.accept("Menu.");
+        for (int index = 0; index < actions.size(); index++) {
+            output.accept(index + ". " + actions.get(index).name());
         }
+    }
 
+    public static void main(String[] args) {
+        List<UserAction> actions = new ArrayList<>();
+        Input input = new ConsoleInput();
+        Input validate = new ValidateInput(input);
+        Tracker tracker = new Tracker();
+                actions.add(new CreateAction());
+                actions.add(new ShowAction());
+                actions.add(new ReplaceAction());
+                actions.add(new DeleteAction());
+                actions.add(new FindByIdAction());
+                actions.add(new FindByNameAction());
+                actions.add(new ExitAction());
+        new StartUI(validate, tracker, System.out::println).init(actions);
+    }
 }
-
