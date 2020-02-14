@@ -1,7 +1,7 @@
 package lambda;
 
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import java.util.*;
+import java.util.function.*;
 
 /**
  * Class Calculator
@@ -21,6 +21,14 @@ public class Calculator {
         for (int index = start; index != finish; index++) {
             media.accept(op.apply(value, index));
         }
+    }
+
+    List<Double> diapason(int start, int end, Function<Double, Double> func) {
+        List<Double> rsl = new ArrayList<>();
+        for (int index = start; index != end; index++) {
+            rsl.add(func.apply((double) index));
+        }
+        return rsl;
     }
 
 
