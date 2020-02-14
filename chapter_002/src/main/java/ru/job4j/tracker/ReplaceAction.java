@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 /**
  * Class ReplaceAction
  *
@@ -8,6 +10,10 @@ package ru.job4j.tracker;
  * @since 13.01.2020
  */
 public class ReplaceAction implements UserAction {
+
+    private final Consumer<String> output = s -> {
+    };
+
     @Override
     public String name() {
         return "Edit item.";
@@ -20,9 +26,9 @@ public class ReplaceAction implements UserAction {
         Item item = new Item(newName);
         boolean check = tracker.replace(id, item);
         if (check) {
-            System.out.println("Item ID :" + id + " was edited.");
+            output.accept("Item ID :" + id + " was edited.");
         } else {
-            System.out.println("Item ID :" + id + " not found.");
+            output.accept("Item ID :" + id + " not found.");
         }
         return true;
     }

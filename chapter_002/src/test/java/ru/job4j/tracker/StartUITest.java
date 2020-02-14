@@ -9,6 +9,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.function.Consumer;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
@@ -21,20 +22,15 @@ import static org.junit.Assert.assertThat;
  * @since 12.01.2020
  */
 public class StartUITest {
-    private final List<UserAction> userActions = new ArrayList<>();
-    private final PrintStream def = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-    @Before
-    public void loadOutput() {
-        System.out.println("execute before method");
-        System.setOut(new PrintStream(this.out));
-    }
-    @After
-    public void backOutput() {
-        System.setOut(this.def);
-        System.out.println("execute after method");
-    }
+    private final Consumer<String> output = new Consumer<>() {
+        private final PrintStream stdout = new PrintStream(out);
 
+        @Override
+        public void accept(String s) {
+            stdout.println(s);
+        }
+    };
     @Test
     public void whenAddItem() {
         String[] answers = {"Fix PC"};
@@ -50,50 +46,27 @@ public class StartUITest {
     @Test
     public void whenReplaceItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("Bug");
+        Item item = new Item("new item");
         tracker.add(item);
-        String[] answers = {item.getId(), "Peplace"};
+        String[] answers = {
+                item.getId(), // id сохраненной заявки в объект tracker.
+                "replaced item"
+        };
         ReplaceAction replaceAction = new ReplaceAction();
         replaceAction.execute(new StubInput(answers), tracker);
         Item replaced = tracker.findById(item.getId());
-        assertThat(replaced.getName(), is("Peplace"));
+        assertThat(replaced.getName(), is("replaced item"));
     }
 
     @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("bug");
+        Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {item.getId()};
         DeleteAction deleteAction = new DeleteAction();
         deleteAction.execute(new StubInput(answers), tracker);
         assertThat(tracker.findById(answers[0]), is(nullValue()));
-    }
-
-    @Test
-    public void whenExit() {
-        StubInput input = new StubInput(
-                new String[] {"0"}
-        );
-        StubAction action = new StubAction();
-        userActions.add(action);
-        new StartUI().init(input, new Tracker(), userActions);
-        assertThat(action.isCall(), is(true));
-    }
-
-    @Test
-    public void whenPrtMenu() {
-        StubInput input = new StubInput(
-                new String[] {"0"}
-        );
-        StubAction action = new StubAction();
-        userActions.add(action);
-        new StartUI().init(input, new Tracker(), userActions);
-        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("Menu.")
-                .add("0. Stub action")
-                .toString();
-        assertThat(new String(out.toByteArray()), is(expect));
     }
 }
 
