@@ -24,7 +24,6 @@ import static org.junit.Assert.assertThat;
  */
 public class StartUITest {
     private final List<UserAction> userActions = new ArrayList<>();
-    private final PrintStream def = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final Consumer<String> output = s -> {
 
@@ -50,7 +49,7 @@ public class StartUITest {
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
         CreateAction createAction = new CreateAction();
-        createAction.execute(input, tracker);
+        createAction.execute(input, tracker, output);
         Item created = tracker.findAll().get(0);
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
@@ -63,7 +62,7 @@ public class StartUITest {
         tracker.add(item);
         String[] answers = {item.getId(), "Peplace"};
         ReplaceAction replaceAction = new ReplaceAction();
-        replaceAction.execute(new StubInput(answers), tracker);
+        replaceAction.execute(new StubInput(answers), tracker, output);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is("Peplace"));
     }
@@ -75,7 +74,7 @@ public class StartUITest {
         tracker.add(item);
         String[] answers = {item.getId()};
         DeleteAction deleteAction = new DeleteAction();
-        deleteAction.execute(new StubInput(answers), tracker);
+        deleteAction.execute(new StubInput(answers), tracker, output);
         assertThat(tracker.findById(answers[0]), is(nullValue()));
     }
 

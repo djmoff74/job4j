@@ -27,14 +27,14 @@ public class StartUI {
     public void init(List<UserAction> actions) {
         boolean run = true;
         while (run) {
-            this.showMenu(actions);
+            this.showMenu(actions, output);
             int select = input.askInt("Select: ", actions.size());
             UserAction action = actions.get(select);
-            run = action.execute(input, tracker);
+            run = action.execute(input, tracker, output);
         }
     }
 
-    private void showMenu(List<UserAction> actions) {
+    private void showMenu(List<UserAction> actions, Consumer<String> output) {
         output.accept("Menu.");
         for (int index = 0; index < actions.size(); index++) {
             output.accept(index + ". " + actions.get(index).name());

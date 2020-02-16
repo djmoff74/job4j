@@ -20,7 +20,7 @@ public class ReplaceAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         String id = input.askStr("Enter Id: ");
         String newName = input.askStr("Enter new name: ");
         Item item = new Item(newName);

@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.StringJoiner;
+import java.util.function.Consumer;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -19,8 +20,12 @@ import static org.junit.Assert.assertThat;
  * @since 13.01.2020
  */
 public class FindByNameActionTest {
-    private final PrintStream def = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final Consumer<String> output = s -> {
+
+    };
+    private final PrintStream stdout = new PrintStream(out);
+
     @Before
     public void loadOutput() {
         System.out.println("execute before method");
@@ -28,7 +33,7 @@ public class FindByNameActionTest {
     }
     @After
     public void backOutput() {
-        System.setOut(this.def);
+        System.setOut(this.stdout);
         System.out.println("execute after method");
     }
     @Test
@@ -37,7 +42,7 @@ public class FindByNameActionTest {
         Item item = new Item("fix bug");
         tracker.add(item);
         FindByNameAction act = new FindByNameAction();
-        act.execute(new StubInput(new String[] {item.getName()}), tracker);
+        act.execute(new StubInput(new String[] {item.getName()}), tracker, output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();
