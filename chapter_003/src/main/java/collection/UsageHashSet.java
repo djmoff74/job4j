@@ -1,6 +1,7 @@
 package collection;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Class UsageHashSet
@@ -11,11 +12,7 @@ import java.util.HashSet;
  */
 public class UsageHashSet {
     public static void main(String[] args) {
-        HashSet<String> autos = new HashSet<>();
-        autos.add("Lada");
-        autos.add("BMW");
-        autos.add("Volvo");
-        autos.add("Toyota");
+        Set<String> autos = Set.of("Lada", "BMW", "Volvo", "Toyota");
         for (String auto : autos) {
             System.out.println(auto);
         }
