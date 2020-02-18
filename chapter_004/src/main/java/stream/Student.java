@@ -1,6 +1,8 @@
 package stream;
 
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Class Student
@@ -9,7 +11,7 @@ import java.util.Objects;
  * @version 1.0
  * @since 2/15/2020
  */
-public class Student {
+public class Student implements Comparable<Student> {
     private String name;
     private int score;
 
@@ -24,6 +26,15 @@ public class Student {
 
     public int getScore() {
         return score;
+    }
+
+    static List<Student> levelOf(List<Student> students, int bound) {
+        return students.stream().
+                flatMap(Stream::ofNullable).
+                sorted().
+                takeWhile(student -> student.getScore() > bound).
+                collect(Collectors.toList());
+
     }
 
     @Override
@@ -49,5 +60,10 @@ public class Student {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return Integer.compare(o.getScore(), this.getScore());
     }
 }
